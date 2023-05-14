@@ -1,19 +1,19 @@
 import { Div, List } from "./ContactListStyled";
-import { useSelector } from "react-redux";
 import { ContactItem } from "components/ContactItem/ContactItem";
-import { selectContacts, selectContactsFilter } from "redux/selectors";
-
+import { useContacts } from "hooks/useContacts";
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filterValue = useSelector(selectContactsFilter).toLowerCase();
+  
+  const { selectedContacts } = useContacts();
+  const { contactFilter } = useContacts();
+  const filterValue = contactFilter.toLowerCase();
 
   const getVisibilityContacts = () => {
-    if (!filterValue || filterValue === "") {
-      return contacts;
+    if (!filterValue || filterValue === '') {
+      return selectedContacts;
     }
-    
-    return contacts.filter(contact =>
+
+    return selectedContacts.filter(contact =>
       contact.name.toLowerCase().includes(filterValue)
     );
   };
@@ -23,10 +23,10 @@ export const ContactList = () => {
   return (
     <Div>
       <List>
-        {visibilityContacts && 
-          visibilityContacts.map(({ name, phone, id }) => (
-            <ContactItem key={id} name={name} phone={phone} id={id} />
-        ))}
+        {visibilityContacts &&
+          visibilityContacts.map(({ name, number, id }) => (
+            <ContactItem key={id} name={name} phone={number} id={id} />
+          ))}
       </List>
     </Div>
   );

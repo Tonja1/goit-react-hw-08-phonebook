@@ -1,23 +1,23 @@
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button, Form, Input, Label } from "./FormStyled";
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contactOperations';
+import { useContacts } from 'hooks/useContacts';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const contactName = contacts.map(name => name.name);
+  const { selectedContacts } = useContacts();
+  const contactName = selectedContacts.map(name => name.name);
 
   const addCont = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
-    const phone = event.currentTarget.elements.number.value;
+    const number = event.currentTarget.elements.number.value;
     if (contactName.includes(name)) {
       return toast.warn(`This contact is already in phonebook!`);
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
 
     event.currentTarget.reset();
   };
