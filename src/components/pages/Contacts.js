@@ -2,7 +2,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ContactForm } from 'components/ContactForm/Form';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Container, Div } from 'components/App/AppStyled';
+import { Contain, Div } from 'components/App/AppStyled';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/contactOperations';
@@ -16,7 +16,7 @@ function Contacts() {
   }, [dispatch]);
   return (
     <HelmetProvider>
-      <Container>
+      <Contain>
         <Helmet>
           <title>Contacts</title>
         </Helmet>
@@ -30,7 +30,7 @@ function Contacts() {
           <Filter />
           <ContactList />
         </Div>
-      </Container>
+      </Contain>
     </HelmetProvider>
   );
 }
