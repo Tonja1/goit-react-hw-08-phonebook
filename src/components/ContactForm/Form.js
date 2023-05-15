@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 import { Button, Form, Input, Label } from "./FormStyled";
 import { addContact } from 'redux/contacts/contactOperations';
-import { useContacts } from 'hooks/useContacts';
+import { useContacts } from '../../hooks/useContacts';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
