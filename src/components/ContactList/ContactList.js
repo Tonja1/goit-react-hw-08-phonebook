@@ -24,8 +24,8 @@ export const ContactList = () => {
     <Div>
       <List>
         {visibilityContacts &&
-          visibilityContacts.map(({ name, number, id }) => (
-            <ContactItem key={id} name={name} phone={number} id={id} />
+          visibilityContacts.map(({ name, phone, id }) => (
+            <ContactItem key={id} name={name} phone={phone} id={id} />
           ))}
       </List>
     </Div>

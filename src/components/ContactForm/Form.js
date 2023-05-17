@@ -13,11 +13,11 @@ export const ContactForm = () => {
   const addCont = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
-    const number = event.currentTarget.elements.number.value;
+    const phone = event.currentTarget.elements.number.value;
     if (contactName.includes(name)) {
       return toast.warn(`This contact is already in phonebook!`);
     }
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone }));
 
     event.currentTarget.reset();
   };
