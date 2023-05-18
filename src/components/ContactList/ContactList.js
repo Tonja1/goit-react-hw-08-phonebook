@@ -1,6 +1,6 @@
 import { Div, List } from "./ContactListStyled";
 import { ContactItem } from "components/ContactItem/ContactItem";
-import { useContacts } from "hooks/useContacts";
+import { useContacts } from "../../hooks/useContacts";
 
 export const ContactList = () => {
   
@@ -24,8 +24,8 @@ export const ContactList = () => {
     <Div>
       <List>
         {visibilityContacts &&
-          visibilityContacts.map(({ name, phone, id }) => (
-            <ContactItem key={id} name={name} phone={phone} id={id} />
+          visibilityContacts.map(({ name, number, id }) => (
+            <ContactItem key={id} name={name} phone={number} id={id} />
           ))}
       </List>
     </Div>
